@@ -1,0 +1,44 @@
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+
+function CharacterDetail () {
+    const { id } = useParams()
+    const [character, setCharacter] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(null)
+
+    useEffect(() => {
+        async function load() {
+            try {
+                setIsLoading(true)
+                const response = await fetch(`https://rickandmortyapi.com/api/character/${id}`)
+                if (!response.ok) {
+                    throw new Error('Personaje no encontrado')
+                }
+                setCharacter(await response.json())
+            } catch (error) {
+                setError(error)
+            } finally {
+                setIsLoading(false)
+            }
+        }
+        load()
+    }, [id])
+
+    if (isLoading) return <p>Cargando...</p>
+    if (error) return <p>Error:{error}</p>
+
+    return (
+        <div>
+            <h2>{character.name}</h2>
+            <img src={character.image} alt={character.name} />
+            <p>Estado: {character.status}</p>
+            <p>Especie: {character.species}</p>
+        </div>
+    )
+    
+}
+
+export {
+    CharacterDetail
+}
