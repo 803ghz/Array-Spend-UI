@@ -37,7 +37,7 @@ function RegisterForm() {
         if (!data.name.trim) errors.name = "El nombre es obligatorio" 
         if (!data.email.includes("@")) errors.email = "El email es obligatorio"
         if (!data.password.length >= 6) errors.password = "Mínimo 6 caracteres"
-        if (data.password !== data.confirmPassword) errors.confirmPassword = "Las contraseñas no coinciden"
+        if (data.password !== data.confirmPassword || data.confirmPassword) errors.confirmPassword = "Las contraseñas no coinciden"
         return errors;
     }
 
