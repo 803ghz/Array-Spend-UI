@@ -1,11 +1,11 @@
-function Characters () {
+function Dashboard () {
     return (
     <div>
-        <h1>Characters</h1>
+        <h1>Dashboard</h1>
         <p>En construcción</p>
     </div> 
 )}
 
 export {
-    Characters
+    Dashboard
 }
