@@ -41,8 +41,9 @@ function LoginForm() {
 			/>
 			{error && <p className="text-red-600">{error}</p>}
 			<button disabled={isLoading} className="rounded bg-blue-600 py-2 text-white disabled:opacity-50">
-				{isLoading ? "Entrando…" : "Entrar"}
+				{isLoading ? "Entrando…" : "Continuar"}
 			</button>
+				<p>¿No tienes cuenta? <a href="/register">Regístrate aquí.</a></p>
 		</form>
 	);
 }
