@@ -19,7 +19,7 @@ function RegisterForm() {
         }));
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
         const foundedErrors = validate(data);
         setErrors(foundedErrors)
@@ -28,7 +28,23 @@ function RegisterForm() {
             return;
         }
 
-        console.log("Enviando", data);
+        try {
+            const response = await fetch("http://localhost:2001/api/users/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                alert("Usuario creado correctamente");
+            } else {
+                alert("Error al crear el usuario");
+            }
+        } catch (error) {
+            console.error("Error de conexión:", error);
+        }
     }
 
     function validate(data) {
