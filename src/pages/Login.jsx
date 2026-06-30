@@ -17,7 +17,7 @@ function Login() {
                     </p>
 
                     <div className="mt-5 flex h-[200px] w-full items-center justify-center rounded-xl bg-[var(--bg)]">
-                        <img className="h-auto w-[300px] rounded-lg" src="/src/shared/assets/flatdesign.png" alt="Mockup" />
+                        <img className="h-auto w-[300px] rounded-lg" src="/src/shared/assets/arrayspendlogo.png" alt="Mockup" />
                     </div>
 
                 </div>
