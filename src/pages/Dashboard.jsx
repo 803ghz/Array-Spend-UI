@@ -67,12 +67,13 @@ function Dashboard() {
             {listas.length > 0 && (
                 <div className="flex gap-2 mb-4">
                     <select 
-                        className="p-2 border rounded dark:bg-gray-800 flex-grow"
+                        className="p-2 border rounded bg-white text-gray-900 dark:bg-gray-800 dark:text-white dark:border-gray-600 grow transition-colors duration-200"
                         onChange={(e) => setListaId(e.target.value)}
-                        value={listaId || ""}
-                    >
+                        value={listaId || ""}>
                         {listas.map(l => (
-                            <option key={l.id || l._id} value={l.id || l._id}>{l.nombre}</option>
+                            <option key={l.id || l._id} value={l.id || l._id}>
+                                {l.nombre}
+                            </option>
                         ))}
                     </select>
                     <button onClick={handleDeleteLista} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
