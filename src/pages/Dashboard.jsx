@@ -60,14 +60,14 @@ function Dashboard() {
     const totalGastos = gastos.reduce((sum, g) => sum + parseFloat(g.cantidad || 0), 0);
 
     return (
-        <div className="p-6">
-            <h1 className="text-2xl font-bold mb-4">Mis Gastos</h1>
+        <div className="p-4 md:p-6">
+            <h1 className="text-2xl font-bold mb-4 text-[var(--text-h)]">Mis Gastos</h1>
             <CrearLista onListaCreada={cargarDatos} />
             
             {listas.length > 0 && (
-                <div className="flex gap-2 mb-4">
+                <div className="flex flex-col sm:flex-row gap-2 mb-4">
                     <select 
-                        className="p-2 border rounded bg-white text-gray-900 dark:bg-gray-800 dark:text-white dark:border-gray-600 grow transition-colors duration-200"
+                        className="p-2 border rounded bg-[var(--bg)] border-[var(--border)] text-[var(--text)] grow transition-colors duration-200"
                         onChange={(e) => setListaId(e.target.value)}
                         value={listaId || ""}>
                         {listas.map(l => (
@@ -76,25 +76,27 @@ function Dashboard() {
                             </option>
                         ))}
                     </select>
-                    <button onClick={handleDeleteLista} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                    <button onClick={handleDeleteLista} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors">
                         Borrar Lista
                     </button>
                 </div>
             )}
 
             {listaId ? (
-                <>
-                    <div className="p-4 bg-blue-100 dark:bg-white-900 mb-4 rounded font-bold text-xl">
-                        Total: {totalGastos.toFixed(2)}€
+                <div className="flex flex-col lg:grid lg:grid-cols-3 gap-6">
+                    <div className="lg:col-span-1 flex flex-col gap-4">
+                        <div className="p-4 bg-[var(--accent-bg)] border border-[var(--accent-border)] mb-4 rounded-xl font-bold text-xl text-[var(--text-h)]">
+                            Total: {totalGastos.toFixed(2)}€
+                        </div>
+                        <FormularioGasto listaId={listaId} onGastoCreado={cargarDatos} />
                     </div>
-                    <FormularioGasto listaId={listaId} onGastoCreado={cargarDatos} />
-                    <ListaGastos gastos={gastos} onDelete={handleDelete} />
-                </>
-            ) : <p>Crea una lista para empezar.</p>}
+                    <div className="lg:col-span-2">
+                        <ListaGastos gastos={gastos} onDelete={handleDelete} />
+                    </div>
+                </div>
+            ) : <p className="text-(--text)">Crea una lista para empezar.</p>}
         </div>
     );
 }
 
-export {
-    Dashboard 
-};
+export { Dashboard };
