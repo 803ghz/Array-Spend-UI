@@ -13,12 +13,6 @@ function About() {
                 intuitiva que te permite entender en qué gastas tu dinero con un solo vistazo.
             </p>
 
-            <div className="carousel-container my-8 overflow-x-auto flex gap-4 border p-4 rounded">
-                <img src="/ArraySpendUI/src/shared/assets/arrayspendlogo.png" alt="Captura 1" className="h-48 w-auto rounded" />
-                <img src="/ArraySpendUI/src/shared/assets/flatdesign.png" alt="Captura 2" className="h-48 w-auto rounded" />
-                <img src="/ArraySpendUI/src/shared/assets/favicon.png" alt="Captura 3" className="h-48 w-auto rounded" />
-            </div>
-
             <div className="mt-8 pt-6 border-t border-gray-200">
                 <p className="text-sm text-gray-500 italic">
                     Creado por <strong>Sergio Diaz</strong>
